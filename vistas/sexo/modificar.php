@@ -4,6 +4,9 @@ require_once '../../modelos/Sexo.php';
 try {
     $sexo = new Sexo($_GET);
     $sexo = $sexo->buscar();
+
+    var_dump($sexo);
+    exit;
 } catch (PDOException $e) {
     $error = $e->getMessage();
 } catch (Exception $e2){
@@ -18,7 +21,7 @@ try {
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
-            <form action="/final_ramos/controladores/sexos/modificar.php" method="POST" class="col-lg-8 border bg-light p-3">
+            <form action="/final_ramos/controladores/Sexos/modificar.php" method="POST" class="col-lg-8 border bg-light p-3">
                 <input type="hidden" name="sexo_id" value="<?= $sexo[0]['SEXO_ID']?>">
                 <div class="mb-3">
                     <label for="sexo_descr" class="form-label">Descripción del Sexo</label>

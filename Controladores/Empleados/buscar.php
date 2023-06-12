@@ -19,8 +19,10 @@ if ($_POST) {
                 <thead class="table-dark">
                 <tr>
                     <th>NO.</th>
-                    <th>NOMBRES</th>
-                    <th>APELLIDOS</th>
+                    <th>PRIMER NOMBRES</th>
+                    <th>SEGUNDO NOMBRES</th>
+                    <th>PRIMER APELLIDOS</th>
+                    <th>SEGUNDO APELLIDOS</th>
                     <th>DPI</th>
                     <th>EDAD</th>
                     <th>PUESTO ID</th>
@@ -34,8 +36,10 @@ if ($_POST) {
                         <?php foreach ($resultados as $key => $empleado) : ?>
                             <tr>
                                 <td><?= $key + 1 ?></td>
-                                <td><?= $empleado['EMP_NOM1']. ' ' . $empleado['EMP_NOM2'] ?></td>
-                                <td><?= $empleado['EMP_APE1']. ' ' . $empleado['EMP_APE2'] ?></td>
+                                <td><?= $empleado['EMP_NOM1'] ?></td>
+                                <td><?= $empleado['EMP_NOM2'] ?></td>
+                                <td><?= $empleado['EMP_APE1'] ?></td>
+                                <td><?= $empleado['EMP_APE2'] ?></td>
                                 <td><?= $empleado['EMP_DPI'] ?></td>
                                 <td><?= $empleado['EMP_EDAD'] ?></td>
                                 <td><?= $empleado['EMP_PUESTO_ID'] ?></td>

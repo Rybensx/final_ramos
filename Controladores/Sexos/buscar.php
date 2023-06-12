@@ -35,8 +35,8 @@ try {
                         <tr>
                             <td><?= $key + 1 ?></td>
                             <td><?= $sexo['SEXO_DESCR'] ?></td>
-                            <td><a class="btn btn-warning w-100" href="/final_ramos/vistas/sexo/modificar.php?sexo_id=<?= $sexo['sexo_id']?>">Modificar</a></td>
-                            <td><a class="btn btn-danger w-100" href="/final_ramos/controladores/sexos/eliminar.php?sexo_id=<?= $sexo['sexo_id']?>">Eliminar</a></td>
+                            <td><a class="btn btn-warning w-100" href="/final_ramos/vistas/sexo/modificar.php?sexo_id=<?= $sexo['SEXO_ID']?>">Modificar</a></td>
+                            <td><a class="btn btn-danger w-100" href="/final_ramos/controladores/sexos/eliminar.php?sexo_id=<?= $sexo['SEXO_ID']?>">Eliminar</a></td>
                         </tr>
                         <?php endforeach ?>
                         <?php else :?>

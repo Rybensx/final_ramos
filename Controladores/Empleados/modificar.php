@@ -1,14 +1,19 @@
 <?php
-require '../../modelos/Area.php';
+require '../../modelos/Empleado.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-if($_POST['area_nom'] != '' && $_POST['area_id'] != ''){
+if($_POST['emp_nom1'] != '' && $_POST['emp_nom2'] != '' && $_POST['emp_ape1'] != '' && $_POST['emp_ape2'] != '' 
+   && $_POST['emp_dpi'] != '' && $_POST['emp_edad'] != '' && $_POST['emp_puesto_id'] != '' && $_POST['emp_sexo_id'] != '' && $_POST['emp_situacion'] != ''){
 
-
-
+   
     try {
-        $area = new areas($_POST);
-        $resultado = $area->modificar();
+        $empleado = new empleado($_POST);
+        $resultado = $empleado->modificar();
+
+        
 
     } catch (PDOException $e) {
         $error = $e->getMessage();
@@ -18,6 +23,14 @@ if($_POST['area_nom'] != '' && $_POST['area_id'] != ''){
 }else{
     $error = "Debe llenar todos los datos";
 }
+
+
+// if($resultado){
+//     echo "Guardado exitosamente";
+// }else{
+//     echo "Ocurrió un error: $error";
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -46,7 +59,7 @@ if($_POST['area_nom'] != '' && $_POST['area_id'] != ''){
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/final_ramos/controladores/Areas/buscar.php?area_nom=<?= $_POST['area_nom'] ?>" class="btn btn-info">Volver al formulario</a>
+                <a href="/final_ramos/vistas/Empleados/buscar.php" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>

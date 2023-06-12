@@ -1,21 +1,19 @@
 <?php
+require '../../modelos/areas.php';
+    try {
+        $areas = new areas($_GET);
 
-require '../../modelos/Area.php';
-
-try {
-    $areas = new areas($_GET);
-    $areas = $areas->buscar();
-
-    // echo "<pre>";
-    // var_dump($areas[0]['AREA_COD']);
-    // echo "</pre>";
-    // exit;
-
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-} catch (Exception $e2){
-    $error = $e2->getMessage();
-}
+        $areas = $areas->buscar();
+        // echo "<pre>";
+        // var_dump($areas[0]['AREA_COD']);
+        // echo "</pre>";
+        // exit;
+        // $error = "NO se guardó correctamente";
+    } catch (PDOException $e) {
+        $error = $e->getMessage();
+    } catch (Exception $e2){
+        $error = $e2->getMessage();
+    }
 ?>
 <?php include_once '../../includes/header.php'?>
     <div class="container">
@@ -25,7 +23,7 @@ try {
                 <input type="hidden" name="area_id" value="<?= $areas[0]['AREA_ID'] ?>" >
                 <div class="row mb-3">
                     <div class="col">
-                        <label for="area_descr">Descripcion del Area</label>
+                        <label for="area_nom">Descripcion del Area</label>
                         <input type="text" name="area_nom" id="area_nom" class="form-control" value="<?= $areas[0]['AREA_NOM'] ?>">
                     </div>
                 </div>

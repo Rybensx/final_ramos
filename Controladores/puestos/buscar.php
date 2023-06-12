@@ -26,8 +26,8 @@ if ($_POST) {
     </tr>
 </thead>
 <tbody>
-    <?php if (!empty($resultados)) : ?>
-        <?php foreach ($resultados as $key => $puesto) : ?>
+        <?php if(count($puestos) > 0):?>
+        <?php foreach($puestos as $key => $puestos) : ?>
             <tr>
                 <td><?= $key + 1 ?></td>
                 <td><?= $puesto['PUESTO_DESCR'] ?></td>

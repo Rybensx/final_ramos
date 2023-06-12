@@ -23,6 +23,10 @@ class Sexo extends Conexion{
         if($this->sexo_descr != ''){
             $sql .= " WHERE sexo_descr LIKE '%$this->sexo_descr%' ";
         }
+
+        if($this->sexo_id != null){
+            $sql .= " and sexo_id = $this->sexo_id ";
+        }
     
         $resultado = self::servir($sql);
         return $resultado;

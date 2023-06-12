@@ -4,7 +4,7 @@
 <div class="container">
     <h1 class="text-center">Buscar Área</h1>
     <div class="row justify-content-center">
-        <form action="/final_ramos/controladores/Areas/buscar.php" method="POST" class="col-lg-8 border bg-light p-3">
+        <form action="/final_ramos/controladores/Areas/buscar.php" method="GET" class="col-lg-8 border bg-light p-3">
             <div class="row mb-3">
                 <div class="col">
                     <label for="area_nom">Nombre del área</label>
