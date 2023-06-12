@@ -76,6 +76,26 @@ class Empleado extends Conexion{
         return $resultado;
     }
 
+    // public function buscar(){
+    //     $sql = "SELECT * from empleados where emp_situacion = 1 ";
+    
+    //     $busqueda = $this->buscar;
+    
+    //     if($busqueda != ''){
+    //         $sql .= " AND (emp_nom1 like '%$busqueda%' ";
+    //         $sql .= " OR emp_nom2 like '%$busqueda%' ";
+    //         $sql .= " OR emp_ape1 like '%$busqueda%' ";
+    //         $sql .= " OR emp_ape2 like '%$busqueda%' ";
+    //         $sql .= " OR emp_dpi like '%$busqueda%' ";
+    //         $sql .= " OR emp_edad like '%$busqueda%' ";
+    //         $sql .= " OR emp_puesto_id like '%$busqueda%' ";
+    //         $sql .= " OR emp_sexo_id like '%$busqueda%') ";
+    //     }
+    
+    //     $resultado = self::servir($sql);
+    //     return $resultado;
+    // }
+    
     public function modificar(){
         $sql = "UPDATE empleados SET emp_nom1 = '$this->emp_nom1', emp_nom2 = '$this->emp_nom2', emp_ape1 = '$this->emp_ape1', emp_ape2 = '$this->emp_ape2', emp_dpi = '$this->emp_dpi', emp_edad = '$this->emp_edad', emp_puesto_id = '$this->emp_puesto_id', emp_sexo_id = '$this->emp_sexo_id', emp_situacion = '$this->emp_situacion' where emp_id = $this->emp_id";
         $resultado = self::ejecutar($sql);

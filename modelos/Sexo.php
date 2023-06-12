@@ -19,15 +19,11 @@ class Sexo extends Conexion{
 
     public function buscar(){
         $sql = "SELECT * from sexo ";
-
+    
         if($this->sexo_descr != ''){
-            $sql .= " where sexo_descr like '%$this->sexo_descr%' ";
+            $sql .= " WHERE sexo_descr LIKE '%$this->sexo_descr%' ";
         }
-
-        if($this->sexo_id != null){
-            $sql .= (strpos($sql, 'where') === false ? 'where' : 'and')." sexo_id = $this->sexo_id ";
-        }
-
+    
         $resultado = self::servir($sql);
         return $resultado;
     }

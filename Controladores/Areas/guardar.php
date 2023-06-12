@@ -1,7 +1,7 @@
 <?php
 require_once '../../modelos/Area.php';
 
-if(!empty($_POST['area_nom'])){
+if($_POST['area_nom'] != ''){
     try {
         $areaObj = new Area([
             'area_nom' => $_POST['area_nom']

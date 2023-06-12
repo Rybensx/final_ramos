@@ -1,7 +1,7 @@
 <?php
 require_once '../../modelos/Sexo.php';
 
-if(!empty($_POST['sexo_descr'])){
+if($_POST['sexo_descr'] != ''){
     try {
         $areaObj = new Sexo([
             'sexo_descr' => $_POST['sexo_descr']

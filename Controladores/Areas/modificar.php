@@ -1,15 +1,19 @@
 <?php
-require '../../modelos/Puesto.php';
-if($_POST['puesto_descr'] != '' && $_POST['puesto_suel'] != ''){
+require '../../modelos/Area.php';
+
+
+if($_POST['area_nom'] != '' && $_POST['area_id'] != ''){
+
+
 
     try {
-        $puesto = new Puesto($_POST);
-        $resultado = $puesto->guardar();
-        $error = "NO se guardó correctamente";
+        $areas = new Area($_POST);
+        $resultado = $areas->modificar();
+
     } catch (PDOException $e) {
         $error = $e->getMessage();
     } catch (Exception $e2){
-        $error = $e2->getMessage();         
+        $error = $e2->getMessage();
     }
 }else{
     $error = "Debe llenar todos los datos";
@@ -30,22 +34,21 @@ if($_POST['puesto_descr'] != '' && $_POST['puesto_suel'] != ''){
             <div class="col-lg-6">
                 <?php if($resultado): ?>
                     <div class="alert alert-success" role="alert">
-                        Guardado exitosamente!
+                        Modificado exitosamente!
                     </div>
                 <?php else :?>
                     <div class="alert alert-danger" role="alert">
                         Ocurrió un error: <?= $error ?>
                     </div>
-                <?php endif ?>              
+                <?php endif ?>
+              
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/final/vistas/puestos/index.php" class="btn btn-info">Volver al formulario</a>
+                <a href="/final_ramos/controladores/Areas/buscar.php?area_nom=<?= $_POST['area_nom'] ?>" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>
 </body>
 </html>
-
-

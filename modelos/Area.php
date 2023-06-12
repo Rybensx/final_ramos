@@ -42,7 +42,7 @@ class Area extends Conexion{
     }
 
     public function eliminar(){
-        $sql = "UPDATE areas SET area_situacion = '0' where area_id = $this->area_id";
+        $sql = "UPDATE areas SET area_situacion = 0 where area_id = $this->area_id";
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
