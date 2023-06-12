@@ -1,18 +1,11 @@
 <?php
 require_once '../../modelos/Sexo.php';
 
-$sexo_descr = $_POST['sexo_descr'] ?? '';
-
-try {
-    $sexoObj = new Sexo(['sexo_descr' => $sexo_descr]);
-    $resultados = $sexoObj->buscar();
-    // var_dump($resultados);
-    // exit;
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-} catch (Exception $e2){
-    $error = $e2->getMessage();
+if ($_POST) {
+    $sexo = new Sexo($_POST);
+    $resultados = $sexo->buscar();
 }
+
 ?>
 
 <?php include_once '../../includes/header.php'?>
@@ -25,8 +18,6 @@ try {
                         <tr>
                             <th>NO. </th>
                             <th>Descripción del Sexo</th>
-                            <th>MODIFICAR</th>
-                            <th>ELIMINAR</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,9 +25,7 @@ try {
                         <?php foreach($resultados as $key => $sexo) : ?>
                         <tr>
                             <td><?= $key + 1 ?></td>
-                            <td><?= $sexo['SEXO_DESCR'] ?></td>
-                            <td><a class="btn btn-warning w-100" href="/final_ramos/vistas/sexo/modificar.php?sexo_id=<?= $sexo['SEXO_ID']?>">Modificar</a></td>
-                            <td><a class="btn btn-danger w-100" href="/final_ramos/controladores/sexos/eliminar.php?sexo_id=<?= $sexo['SEXO_ID']?>">Eliminar</a></td>
+                            <td><?= $sexo['SEXO_DESCR'] ?></td>                            
                         </tr>
                         <?php endforeach ?>
                         <?php else :?>
@@ -50,7 +39,7 @@ try {
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-4">
-                <a href="/final_ramos/vistas/sexos/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
+                <a href="/final_ramos/vistas/sexo/buscar.php" class="btn btn-info w-100">Volver al formulario</a>
             </div>
         </div>
     </div>
