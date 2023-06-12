@@ -1,20 +1,16 @@
 <?php
-require '../../modelos/Puesto.php';
-if($_POST['puesto_descr'] != '' && $_POST['puesto_suel'] != ''){
+require '../../modelos/Puesto.php';    
 
-    try {
-        $puesto = new Puesto($_POST);
-        $resultado = $puesto->guardar();
-        $error = "NO se guardó correctamente";
-    } catch (PDOException $e) {
-        $error = $e->getMessage();
-    } catch (Exception $e2){
-        $error = $e2->getMessage();         
-    }
-}else{
-    $error = "Debe llenar todos los datos";
+try {
+    $puesto = new Puesto($_GET);
+    $resultado = $puesto->eliminar();
+} catch (PDOException $e) {
+    $error = $e->getMessage();
+} catch (Exception $e2){
+    $error = $e2->getMessage();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,22 +26,20 @@ if($_POST['puesto_descr'] != '' && $_POST['puesto_suel'] != ''){
             <div class="col-lg-6">
                 <?php if($resultado): ?>
                     <div class="alert alert-success" role="alert">
-                        Guardado exitosamente!
+                        Puesto eliminado exitosamente!
                     </div>
                 <?php else :?>
                     <div class="alert alert-danger" role="alert">
                         Ocurrió un error: <?= $error ?>
                     </div>
-                <?php endif ?>              
+                <?php endif ?>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/final_ramos/vistas/puestos/index.php" class="btn btn-info">Volver al formulario</a>
+                <a href="/final_ramos/vistas/puestos/buscar.php" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>
 </body>
 </html>
-
-

@@ -107,4 +107,67 @@ class Empleado extends Conexion{
         $resultado = self::ejecutar($sql);
         return $resultado;
     }
+
+
+
+    public function mostrar(){
+        $sql = "SELECT 
+                    e.emp_id, 
+                    e.emp_nom1, 
+                    e.emp_nom2, 
+                    e.emp_ape1, 
+                    e.emp_ape2, 
+                    e.emp_dpi, 
+                    e.emp_edad, 
+                    s.sexo_descr, 
+                    p.puesto_descr, 
+                    p.puesto_suel
+                FROM empleados e
+                JOIN puestos p ON e.emp_puesto_id = p.puesto_id
+                JOIN sexo s ON e.emp_sexo_id = s.sexo_id
+                WHERE e.emp_situacion = '1'";
+    
+        if($this->emp_nom1 != ''){
+            $sql .= " AND e.emp_nom1 like '%$this->emp_nom1%' ";
+        }
+    
+        if($this->emp_nom2 != ''){
+            $sql .= " AND e.emp_nom2 like '%$this->emp_nom2%' ";
+        }
+    
+        if($this->emp_ape1 != ''){
+            $sql .= " AND e.emp_ape1 like '%$this->emp_ape1%' ";
+        }
+    
+        if($this->emp_ape2 != ''){
+            $sql .= " AND e.emp_ape2 like '%$this->emp_ape2%' ";
+        }
+    
+        if($this->emp_dpi != ''){
+            $sql .= " AND e.emp_dpi = $this->emp_dpi ";
+        }
+    
+        if($this->emp_edad != ''){
+            $sql .= " AND e.emp_edad = $this->emp_edad ";
+        }
+    
+        if($this->emp_puesto_id != ''){
+            $sql .= " AND e.emp_puesto_id = $this->emp_puesto_id ";
+        }
+    
+        if($this->emp_sexo_id != ''){
+            $sql .= " AND e.emp_sexo_id = $this->emp_sexo_id ";
+        }
+    
+        if($this->emp_id != null){
+            $sql .= " AND e.emp_id = $this->emp_id ";
+        }
+    
+        $resultado = self::servir($sql);
+        return $resultado;
+    }
+    
+    
+
+    
 }

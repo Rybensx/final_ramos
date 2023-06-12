@@ -1,26 +1,16 @@
 <?php
-require '../../modelos/Area.php';
+require '../../modelos/Area.php';    
 
-
-    try {
-        $areas = new areas($_GET);
-        $resultado = $areas->eliminar();
-
-    } catch (PDOException $e) {
-        $error = $e->getMessage();
-    } catch (Exception $e2){
-        $error = $e2->getMessage();
-    }
-
-
-
-// if($resultado){
-//     echo "Guardado exitosamente";
-// }else{
-//     echo "Ocurrió un error: $error";
-// }
-
+try {
+    $area = new Area($_GET);
+    $resultado = $area->eliminar();
+} catch (PDOException $e) {
+    $error = $e->getMessage();
+} catch (Exception $e2){
+    $error = $e2->getMessage();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,19 +26,18 @@ require '../../modelos/Area.php';
             <div class="col-lg-6">
                 <?php if($resultado): ?>
                     <div class="alert alert-success" role="alert">
-                        Eliminado exitosamente!
+                        Área eliminada exitosamente!
                     </div>
                 <?php else :?>
                     <div class="alert alert-danger" role="alert">
                         Ocurrió un error: <?= $error ?>
                     </div>
                 <?php endif ?>
-              
             </div>
         </div>
         <div class="row">
             <div class="col-lg-4">
-                <a href="/final/controladores/Areas/buscar.php" class="btn btn-info">Regresa</a>
+                <a href="/final_ramos/controladores/Areas/buscar.php?area_nom=" class="btn btn-info">Volver al formulario</a>
             </div>
         </div>
     </div>
