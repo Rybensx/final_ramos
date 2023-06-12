@@ -1,38 +1,36 @@
 <?php
-require '../../modelos/areas.php';
-    try {
-        $areas = new areas($_GET);
+require_once '../../modelos/Area.php';
 
-        $areas = $areas->buscar();
-        // echo "<pre>";
-        // var_dump($areas[0]['AREA_COD']);
-        // echo "</pre>";
-        // exit;
-        // $error = "NO se guardó correctamente";
-    } catch (PDOException $e) {
-        $error = $e->getMessage();
-    } catch (Exception $e2){
-        $error = $e2->getMessage();
-    }
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+try {
+    $area = new Area($_GET);
+    $area = $area->buscar();
+} catch (PDOException $e) {
+    $error = $e->getMessage();
+} catch (Exception $e2){
+    $error = $e2->getMessage();
+}
 ?>
+
 <?php include_once '../../includes/header.php'?>
-    <div class="container">
-        <h1 class="text-center">Modificar Areas</h1>
-        <div class="row justify-content-center">
-            <form action="/final_ramos/controladores/Areas/modificar.php" method="POST" class="col-lg-8 border bg-light p-3">
-                <input type="hidden" name="area_id" value="<?= $areas[0]['AREA_ID'] ?>" >
-                <div class="row mb-3">
-                    <div class="col">
-                        <label for="area_nom">Descripcion del Area</label>
-                        <input type="text" name="area_nom" id="area_nom" class="form-control" value="<?= $areas[0]['AREA_NOM'] ?>">
-                    </div>
+<?php include_once '../../includes/navbar.php'?>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <form action="/final_ramos/Controladores/Areas/modificar.php" method="POST" class="col-lg-8 border bg-light p-3">
+                <input type="hidden" name="area_id" value="<?= $area[0]['AREA_ID'] ?>">
+                <div class="mb-3">
+                    <label for="area_nom" class="form-label">Nombre de la Área</label>
+                    <input type="text" name="area_nom" id="area_nom" class="form-control" value="<?= $area[0]['AREA_NOM'] ?>">
                 </div>
-                <div class="row mb-3">
-                    <div class="col">
-                        <button type="submit" class="btn btn-warning w-100">Modificar</button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary">Modificar</button>
             </form>
         </div>
     </div>
+</div>
+
 <?php include_once '../../includes/footer.php'?>
