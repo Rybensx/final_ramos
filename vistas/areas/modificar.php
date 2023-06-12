@@ -1,6 +1,6 @@
 <?php
 
-require '../../modelos/areas.php';
+require '../../modelos/Area.php';
 
 try {
     $areas = new areas($_GET);
